@@ -15,8 +15,9 @@ import PostRoutes from "./routes/posts.js";
 import { register } from "./controllers/authController.js";
 import { createPost } from "./controllers/postController.js";
 import { verifyToken } from "./middleware/auth.js";
-import { verify } from "crypto";
-
+import { users, posts } from "./data/index.js";
+import User from "./models/User.js";
+import Post from "./models/Post.js";
 /*Configurations*/
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -52,17 +53,18 @@ app.use("/auth", AuthRoutes);
 app.use("/user", UserRoutes);
 app.use("/post", PostRoutes);
 
-///Mongoose Setup
+/* MONGOOSE SETUP */
 const PORT = process.env.PORT || 6001;
-
 mongoose
  .connect(process.env.MONGODB_URL, {
-  //   useNewUrlParser: true,
-  //   useUnifiedTopology: true,
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
  })
  .then(() => {
-  app.listen(PORT, () => console.log(`DB Connected.Listening on port:${PORT}`));
+  app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
+
+  /* ADD DATA ONE TIME */
+  //   User.insertMany(users);
+  //   Post.insertMany(posts);
  })
- .catch((err) => {
-  console.log(`${err} did not connect`);
- });
+ .catch((error) => console.log(`${error} did not connect`));
