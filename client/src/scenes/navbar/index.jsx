@@ -63,10 +63,11 @@ const NavBar = () => {
     {isNonMobileScreens && (
      <FlexBetween
       backgroundColor={neutralLight}
-      borderRadius={"9px"}
-      gap={"3rem"}
-      padding="0.1rem 1.5rem">
-      <InputBase placxeholder="Search..." />
+      borderRadius="9px"
+      gap="3rem"
+      padding="0.1rem 1.5rem"
+      marginLeft="1rem">
+      <InputBase placeholder="Search..." />
       <IconButton>
        <Search />
       </IconButton>
@@ -75,26 +76,26 @@ const NavBar = () => {
    </FlexBetween>
    {/* Desktop Navigation */}
    {isNonMobileScreens ? (
-    <FlexBetween gap={"2rem"}>
+    <FlexBetween gap="2rem">
      <IconButton onClick={() => dispatch(setMode())}>
       {theme.palette.mode === "dark" ? (
        <DarkMode sx={{ fontSize: "25px" }} />
       ) : (
-       <LightMode sx={{ fontSize: "25px", color: dark }} />
+       <LightMode sx={{ color: dark, fontSize: "25px" }} />
       )}
      </IconButton>
      <Message sx={{ fontSize: "25px" }} />
      <Notifications sx={{ fontSize: "25px" }} />
      <Help sx={{ fontSize: "25px" }} />
-     <FormControl variant="standard" value={"fullName"}>
+     <FormControl variant="standard" value={fullName}>
       <Select
-       value={"fullName"}
+       value={fullName}
        sx={{
         backgroundColor: neutralLight,
         width: "150px",
         borderRadius: "0.25rem",
         p: "0.25rem 1rem",
-        "& .MuiSvgIcon-root:": {
+        "& .MuiSvgIcon-root": {
          pr: "0.25rem",
          width: "3rem",
         },
@@ -106,7 +107,7 @@ const NavBar = () => {
        <MenuItem value={fullName}>
         <Typography>{fullName}</Typography>
        </MenuItem>
-       <MenuItem onClick={() => dispatch(setLogout())}>Logout</MenuItem>
+       <MenuItem onClick={() => dispatch(setLogout())}>Log Out</MenuItem>
       </Select>
      </FormControl>
     </FlexBetween>
