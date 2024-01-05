@@ -8,7 +8,7 @@ export const createFakePost = async (count) => {
  const newPost = new Post({
   userId: faker.database.mongodbObjectId(),
   content: faker.word.words({ count: { min: 15, max: 20 } }),
-  picture: faker.image.url(80, 150),
+  picturePath: faker.image.url(80, 150),
   likes: {},
   comments: {},
  });
@@ -25,7 +25,7 @@ export const createFakeUser = async (count) => {
  const newUser = new User({
   firstName: faker.person.firstName(),
   lastName: faker.person.lastName(),
-  picture: faker.image.url(80, 150),
+  picturePath: faker.image.url(80, 150),
   email: faker.internet.email(),
   password: faker.internet.password(),
   friends: {},
