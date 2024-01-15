@@ -17,7 +17,7 @@ const UserSchema = new mongoose.Schema(
   email: {
    type: String,
    required: true,
-   min: 50,
+   max: 50,
    unique: true,
   },
   password: {
@@ -33,12 +33,8 @@ const UserSchema = new mongoose.Schema(
    type: Array,
    default: [],
   },
-  location: {
-   type: String,
-  },
-  occupation: {
-   type: String,
-  },
+  location: String,
+  occupation: String,
   viewedProfile: Number,
   impressions: Number,
  },
