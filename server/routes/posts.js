@@ -14,4 +14,7 @@ router.get("/:userId/posts", verifyToken, getUserPosts);
 // patch
 router.patch("/:id/like", verifyToken, likePost);
 
+//post
+router.post("/comment/:post_id", verifyToken, commentPost);
+
 export default router;
